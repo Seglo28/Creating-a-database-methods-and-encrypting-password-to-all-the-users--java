@@ -1,0 +1,25 @@
+Hello,
+I'm Gloria.
+
+I created this document to save some of the most 
+important or interesting investigation urls. This 
+is personal, and only for this project. If I need 
+to read something, I can looking for it easily. :)
+
+-----------------------------------------------
+          HIBERNATE JPA ANNOTATIONS
+-----------------------------------------------
+
+https://www.techferry.com/articles/hibernate-jpa-annotations.html
+https://www.geeksforgeeks.org/spring-data-jpa-attributes-of-column-annotation-with-example/?ref=rp
+
+
+
+-----------------------------------------------
+              SPRING ANNOTATIONS
+-----------------------------------------------
+
+https://www.techferry.com/articles/spring-annotations.html
+
+
+
