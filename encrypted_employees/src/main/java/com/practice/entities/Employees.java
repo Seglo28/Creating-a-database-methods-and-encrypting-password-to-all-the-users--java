@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "employees")
-public class employees {
+public class Employees {
 
 	//This column is a student ID
 	@Id
@@ -28,15 +28,15 @@ public class employees {
 	@Column(name = "email", length = 30, nullable = false)
 	private String email = "";
 	//Adding SQL columns attributes
-	@Column(name = "password", length = 30, nullable = false)
+	@Column(name = "password", length = 255, nullable = false)
 	private String password;
 	
 	//Constructors
-	public employees() {
+	public Employees() {
 		super();
 	}
 
-	public employees(int id, String firtsName, String lastName, String email, String password) {
+	public Employees(int id, String firtsName, String lastName, String email, String password) {
 		super();
 		this.id = id;
 		this.firtsName = firtsName;

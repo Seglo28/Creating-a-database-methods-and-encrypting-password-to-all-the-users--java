@@ -20,6 +20,7 @@ https://www.geeksforgeeks.org/spring-data-jpa-attributes-of-column-annotation-wi
 -----------------------------------------------
 
 https://www.techferry.com/articles/spring-annotations.html
+https://mvitinnovaciontecnologica.wordpress.com/2020/02/06/guia-de-anotaciones-de-spring-framework/
 
 
 
