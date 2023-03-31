@@ -1,6 +1,7 @@
 package com.practice.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,12 @@ public class controller {
 	private EmployeeServiceImplement serviceImplement;
 	
 	@PostMapping("/save")
-		public void save(@RequestBody Employees e) { 
+		public void saveEmployee(@RequestBody Employees e) { 
 		serviceImplement.save(e);
 	}
 	
-
+	@PostMapping("/login")
+	public Employees loing(@RequestBody Employees emp) { 
+	return serviceImplement.login(emp);
+	}
 }

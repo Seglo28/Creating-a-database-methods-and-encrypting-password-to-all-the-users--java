@@ -1,5 +1,4 @@
 package com.practice.entities;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +27,7 @@ public class Employees {
 	@Column(name = "email", length = 30, nullable = false)
 	private String email = "";
 	//Adding SQL columns attributes
-	@Column(name = "password", length = 255, nullable = false)
+	@Column(name = "password", length = 250, nullable = false)
 	private String password;
 	
 	//Constructors

@@ -1,34 +1,52 @@
 package com.practice.service;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.practice.entities.Employees;
 import com.practice.hashpassword.Hashpassword;
 
-@Component
+@Service
 public class EmployeeServiceImplement implements EmployeeService{
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	
+	   public EmployeeServiceImplement(@Lazy EmployeeService EmployeeService) {
+	      this.employeeService = EmployeeService;
+	   }
 
 	//Import
-			Hashpassword password = new Hashpassword();
+	
+	Hashpassword passwordDetails = new Hashpassword();
 			
 	public Employees save (Employees employees) {
-		
 		Employees newEmployee = new Employees();
-		
 		newEmployee.setFirtsName(employees.getFirtsName());
 		newEmployee.setLastName(employees.getLastName());
 		newEmployee.setEmail(employees.getEmail());
-		newEmployee.setPassword(password.encodedPassword(employees.getPassword()));
-		
-		return employeeService.save(newEmployee);
+		newEmployee.setPassword(passwordDetails.encodedPassword(employees.getPassword()));
+		employeeService.save(newEmployee);
+		return newEmployee;
 	}
-
-
 	
+	public Employees login (Employees emp) {
+		Employees data = new Employees();
+		System.out.println("METODO LOGIN DE IMPLEMENTS");
+		if(this.findByEmail(emp.getEmail()).isPresent()) {
+			System.out.println("METODO LOGIN DE IMPLEMENTS: VALIDO EL EMAIL");
+			data = passwordDetails.validatePassword(emp.getEmail(), emp.getPassword());
+			System.out.println("METODO LOGIN DE IMPLEMENTS: VALIDO LA PASSWORD");
+		}else {
+			System.out.println("EL CORREO NO EXISTE");
+		}
+		return data;
+	}
 
 	@Override
 	public <S extends Employees> Iterable<S> saveAll(Iterable<S> entities) {
@@ -39,8 +57,7 @@ public class EmployeeServiceImplement implements EmployeeService{
 
 	@Override
 	public Optional<Employees> findById(Integer id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		return employeeService.findById(id);
 	}
 
 
@@ -108,9 +125,8 @@ public class EmployeeServiceImplement implements EmployeeService{
 
 
 	@Override
-	public Employees findByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<Employees> findByEmail(String email) {
+		return employeeService.findByEmail(email);
 	}
 
 
